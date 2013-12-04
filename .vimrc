@@ -1,3 +1,4 @@
+execute pathogen#infect()
 " hg clone https://vim.google.com/hg/ vim
 " cd vim/src
 " ./configure --enable-pythoninterp --with-features=huge --prefix=$HOME/opt/vim
@@ -15,6 +16,10 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 
 colors zenburn
 syntax on
+
+" Mouse and backspace(for erasure)
+set mouse=a
+set bs=2
 
 set t_Co=256
 filetype indent plugin on
@@ -92,11 +97,10 @@ set noswapfile
 " https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
 " Now Plugins are installed directlly inside .vim/plugin/bundle/Nome_do_plugin
- call pathogen#infect()
+call pathogen#infect()
 
- " Settings for vim-powerline
- " cd ~/.vim/bundle
- " git clone git://github.com/Lokaltog/vim-powerline.git
-"  set laststatus=2
-
+" Settings for vim-powerline
+" cd ~/.vim/bundle
+" git clone git://github.com/Lokaltog/vim-powerline.git
+" set laststatus=2
 
