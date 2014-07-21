@@ -46,7 +46,7 @@ autocmd! bufwritepost .vimrc source %
 
 " better copy and paste
 set pastetoggle=<F2>
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 " Mouse and backspace(for erasure)
 set mouse=a
