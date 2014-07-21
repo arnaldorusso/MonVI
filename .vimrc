@@ -66,6 +66,9 @@ map <Leader>m <esc>:tabnext<CR>
 vnoremap < <gv
 vnoremap > >gv
 
+" Quick quit command
+noremap <Leader>e :quit<CR> " Quit current window
+
 " Show line number and lenght
 set number " Show line number
 set tw=79  " widht of document
