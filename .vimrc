@@ -72,8 +72,11 @@ noremap <Leader>e :quit<CR> " Quit current window
 " Show line number and lenght
 set number " Show line number
 set tw=79  " widht of document
-set nowrap " don't automatically wrap on load
-set fo-=t  " don't automatically wrap text when typing
+" set nowrap " don't automatically wrap on load
+" set fo-=t  " don't automatically wrap text when typing
+set wrap
+set linebreak
+set nolist
 set colorcolumn=80
 highlight ColorColumn ctermbg=233
 
