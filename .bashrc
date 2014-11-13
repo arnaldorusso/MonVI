@@ -121,3 +121,6 @@ source /usr/local/bin/virtualenvwrapper.sh
 # Rpy
 export RHOME=~/R-2.15.3
 # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/R-2.15.3/bin
+
+# vim-ipython | <Ctrl>+s
+stty stop undef # to unmap ctrl-s
