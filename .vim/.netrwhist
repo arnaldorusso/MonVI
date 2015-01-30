@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/yepan/.vim/bundle/vim-ipython'
+let g:netrw_dirhist_2='/DADOS/ArNaldO/Codes/institutobotoflipper.github.io/webapp/pages'
+let g:netrw_dirhist_3='/DADOS/ArNaldO/Codes/institutobotoflipper.github.io/webapp/pages/blog'
+let g:netrw_dirhist_4='/DADOS/ArNaldO/Codes/institutobotoflipper.github.io/webapp/templates'
