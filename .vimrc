@@ -1,15 +1,53 @@
-execute pathogen#infect()
-" hg clone https://vim.google.com/hg/ vim
-" cd vim/src
-" ./configure --enable-pythoninterp --with-features=huge --prefix=$HOME/opt/vim
-" make && make install
-" mkdir -p $HOME/bin
-" cd $HOME/bin
-" ln -s $HOME/opt/vim/bin/vim
-" which vim
-" vim --version
-"" inide Debian we install this
-"aptitude install gtk2-engines-pixbuf
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'jnurmine/Zenburn'
+" Plugin 'klen/python-mode'
+" Plugin 'airblade/vim-gitgutter'
+Plugin 'bling/vim-airline'
+Plugin 'kien/ctrlp.vim'
+" Plugin 'tpope/vim-fugitive'
+" Plugin 'tomasr/molokai'
+" Plugin 'tpope/vim-repeat'
+"Plugin 'sjl/gundo.vim'
+"Plugin 'Valloric/YouCompleteMe'
+" Plugin 'scrooloose/syntastic'
+" Plugin 'wincent/Command-T'
+" Plugin 'DamienCassou/textlint'
+" Plugin 'vim-scripts/genutils'
+" Plugin 'vim-scripts/foldutil.vim'
+Bundle 'ivanov/vim-ipython'
+"Plugin 'altercation/vim-colors-solarized'
+
+Plugin 'vim-pandoc/vim-pandoc'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
+Plugin 'tpope/vim-markdown'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-commentary'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
 "==========================================================================
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
@@ -22,7 +60,7 @@ set mouse=a
 set bs=2
 
 set t_Co=256
-filetype indent plugin on
+"filetype indent plugin on
 syntax on
 set tabstop=8 expandtab shiftwidth=4 softtabstop=4
 set modeline
@@ -108,7 +146,7 @@ set syntax=asciidoc
 " https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
 " Now Plugins are installed directlly inside .vim/plugin/bundle/Nome_do_plugin
-call pathogen#infect()
+" call pathogen#infect()
 
 " Settings for vim-powerline
 " cd ~/.vim/bundle
@@ -124,3 +162,9 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
+
+"vim Customizations
+"
+"Clear search highlight
+let g:ctrlp_map = '<c-p>'  "CtrP shortcut
+
