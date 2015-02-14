@@ -11,11 +11,11 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'jnurmine/Zenburn'
 " Plugin 'klen/python-mode'
-" Plugin 'airblade/vim-gitgutter'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'bling/vim-airline'
 Plugin 'kien/ctrlp.vim'
 " Plugin 'tpope/vim-fugitive'
-" Plugin 'tomasr/molokai'
+Plugin 'tomasr/molokai'
 " Plugin 'tpope/vim-repeat'
 "Plugin 'sjl/gundo.vim'
 "Plugin 'Valloric/YouCompleteMe'
@@ -29,9 +29,11 @@ Bundle 'ivanov/vim-ipython'
 
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
-Plugin 'tpope/vim-markdown'
+" Plugin 'tpope/vim-markdown'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-commentary'
+Plugin 'rodnaph/vim-color-schemes'
+Plugin 'sheerun/vim-polyglot'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -167,4 +169,5 @@ inoremap <right> <nop>
 "
 "Clear search highlight
 let g:ctrlp_map = '<c-p>'  "CtrP shortcut
-
+let g:ackprg = "ag --nogroup --nocolor --column"
+"Use Ack for search. Ex: :Ack string .py
