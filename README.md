@@ -3,8 +3,31 @@ MonVI
 
 Usefull personal stuffs
 
-Infos cloned from [HERE](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source)
 
+1. If you are cloning this repo, you could perform an HOME install.
+For this situation you should provide a `--prefix=your/home/folder` inside configure vim:
+
+        $ ./configure --with-features=huge  --enable-rubyinterp \
+        --enable-pythoninterp \
+        --with-python-config-dir=/usr/lib/python2.7-config \
+        --prefix=/your/home/folder
+
+2. After this run `make` and `make install` and include on your `.bashrc` the line an alias to vi and vim from your recently compiled vim:
+
+        alias vi='~/bin/vim'
+        alias vim='~/bin/vim'
+
+3. After this you should install [Vundle](https://github.com/gmarik/Vundle.vim) just typing:
+
+        $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+4. And copying the `.vimrc` from `MonVi` repo to your HOME folder
+
+5. Open `vi` and `:PluginInstall`
+
+
+
+Infos cloned from [HERE](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source)
 Compiling Vim from source is actually not that difficult. Here's what you should do:
 
 1.  First, install all the prerequisite libraries, including Mercurial. For a Debian-like Linux distribution like Ubuntu, that would be the following:
