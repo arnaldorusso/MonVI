@@ -38,6 +38,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-commentary'
 Plugin 'sheerun/vim-polyglot'
 " Plugin 'davidhalter/jedi-vim'
+Plugin 'jcfaria/Vim-R-plugin'
+Plugin 'jalvesaq/VimCom'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -58,6 +60,7 @@ filetype plugin indent on    " required
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 
+" colors Tomorrow-Night
 colors molokai
 " colors zenburn
 syntax on
@@ -101,6 +104,9 @@ set bs=2
 noremap <C-B> :update<CR>
 vnoremap <C-B> <C-C>:update<CR>
 inoremap <C-B> <C-O>:update<CR>
+
+" <ESC> key to jj
+inoremap jj <ESC>
 
 " Move between tabs (created [:tabnew])
 let mapleader=","
@@ -158,6 +164,13 @@ set fileencoding=utf-8
 set fileformat=unix
 set fileformats=unix,dos,mac
 set binary
+
+" Commentary for R language
+autocmd FileType R,r setlocal commentstring=#\ %s
+
+" Commentary for AsciiDoc language
+autocmd FileType adoc,c,cpp,cs,java setlocal commentstring=//\ %s
+
 
 " =============================================
 " Python Setup
@@ -240,7 +253,7 @@ nnoremap <silent> ,a :%s,\s\+$,,<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Word processor mode                                                         "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd BufNewFile,BufRead *.adoc call WordProcessor()
+autocmd BufNewFile,BufRead *.adoc,*.tex call WordProcessor()
 
 function AsciiDocFold()
   let line = getline(v:lnum)
@@ -264,14 +277,17 @@ function WordProcessor()
   " colorscheme summerfruit256
   colorscheme Tomorrow
   syntax on
+  set tw=90  " widht of document
   set wrap
   set linebreak
   set nolist
-  set textwidth=0
-  set wrapmargin=0
-  set colorcolumn=0
-  set spell
+  set formatoptions+=t
+  " set textwidth=0
+  " set wrapmargin=0
+  set colorcolumn=90
+  set spell spelllang=pt_br,en
   setlocal foldmethod=expr
-  setlocal foldexpr=AsciiDocFold()
-  setlocal foldtext=AsciiDocFoldText()
+  set syntax=asciidoc
+  " setlocal foldexpr=AsciiDocFold()
+  " setlocal foldtext=AsciiDocFoldText()
 endfunction
