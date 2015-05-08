@@ -34,6 +34,7 @@ Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'tpope/vim-markdown'
+" Plugin 'dahu/vim-asciidoc'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-commentary'
 Plugin 'sheerun/vim-polyglot'
@@ -107,6 +108,10 @@ inoremap <C-B> <C-O>:update<CR>
 
 " <ESC> key to jj
 inoremap jj <ESC>
+" Press i to enter insert mode, and ii to exit.
+inoremap ii <ESC>
+" Two semicolons are easy to type.
+inoremap ;; <ESC>
 
 " Move between tabs (created [:tabnew])
 let mapleader=","
@@ -253,7 +258,8 @@ nnoremap <silent> ,a :%s,\s\+$,,<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Word processor mode                                                         "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd BufNewFile,BufRead *.adoc,*.tex call WordProcessor()
+" autocmd BufNewFile,BufRead *.adoc,*.tex call WordProcessor()
+autocmd BufNewFile,BufRead *.adoc call WordProcessor()
 
 function AsciiDocFold()
   let line = getline(v:lnum)
@@ -271,6 +277,7 @@ function AsciiDocFoldText()
 endfunction
 
 function WordProcessor()
+  noremap <silent> <leader>f gwip
   if has("gui_macvim")
     set guifont=PT\ Mono:h14
   endif
@@ -281,7 +288,8 @@ function WordProcessor()
   set wrap
   set linebreak
   set nolist
-  set formatoptions+=t
+  " set formatoptions+=t
+  setl fo=aw2tq
   " set textwidth=0
   " set wrapmargin=0
   set colorcolumn=90
