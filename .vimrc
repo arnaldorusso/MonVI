@@ -162,6 +162,9 @@ set noswapfile
 " download this synthax inside synthax folder of .vim directory
 set syntax=asciidoc
 
+" Markdown Unfold file
+" let g:vim_markdown_folding_disabled=1
+set nofoldenable
 
 " line endings & other file chars settings
 set encoding=utf-8
