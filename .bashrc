@@ -88,6 +88,7 @@ fi
 alias ll='ls -l'
 alias la='ls -A'
 #alias l='ls -CF'
+alias vi='vim'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -121,6 +122,7 @@ source /usr/local/bin/virtualenvwrapper.sh
 # Rpy
 export RHOME=~/R-2.15.3
 # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/R-2.15.3/bin
+# export RHOME=~/R-3.1.2
 
 # vim-ipython | <Ctrl>+s
 stty stop undef # to unmap ctrl-s
@@ -128,15 +130,26 @@ stty stop undef # to unmap ctrl-s
 # magicmonty/bash-git-prompt
 # gitprompt configuration
 
-   # Set config variables first
-   GIT_PROMPT_ONLY_IN_REPO=1
+# Set config variables first
+GIT_PROMPT_ONLY_IN_REPO=1
 
-   # GIT_PROMPT_FETCH_REMOTE_STATUS=0   # uncomment to avoid fetching remote status
+# GIT_PROMPT_FETCH_REMOTE_STATUS=0   # uncomment to avoid fetching remote status
 
-   # GIT_PROMPT_START=...    # uncomment for custom prompt start sequence
-   # GIT_PROMPT_END=...      # uncomment for custom prompt end sequence
+# GIT_PROMPT_START=...    # uncomment for custom prompt start sequence
+# GIT_PROMPT_END=...      # uncomment for custom prompt end sequence
 
-   # as last entry source the gitprompt script
-   # GIT_PROMPT_THEME=Custom # use custom .git-prompt-colors.sh
-   # GIT_PROMPT_THEME=Solarized # use theme optimized for solarized color scheme
-   source ~/.bash-git-prompt/gitprompt.sh
+# as last entry source the gitprompt script
+# GIT_PROMPT_THEME=Custom # use custom .git-prompt-colors.sh
+GIT_PROMPT_THEME=Solarized # use theme optimized for solarized color scheme
+source ~/.bash-git-prompt/gitprompt.sh
+
+
+function setproxy() {
+    export {http,https,ftp}_proxy='http://proxy.furg.br:3128'
+}
+
+function unsetproxy() {
+    unset {http,https,ftp}_proxy
+}
+
+# Color Theme
