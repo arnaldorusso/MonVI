@@ -143,7 +143,7 @@ source /usr/local/bin/virtualenvwrapper.sh
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
-    
+
 # terminal colors
 export PS1="\[\e[31m\][\[\e[m\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[38;5;153m\]\h\[\e[m\] \[\e[38;5;214m\]\W\[\e[m\]\[\e[31m\]]\[\e[m\]\\$ "
 
@@ -152,7 +152,7 @@ export PS1="\[\e[31m\][\[\e[m\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[38;5;153m\]\h\[\e
 export SCVIM_TAGFILE=~/.sctags
 
 # Solidaridad
-alia sdb_qas='ssh -N ubuntu@18.231.78.210 -i ~/.ssh/S-Cloud.pem -L 3333:sdu-qas-rds.cxvmlebcsgyb.sa-east-1.rds.amazonaws.com:5432'
+alias db_qas='ssh -N ubuntu@18.231.78.210 -i ~/.ssh/S-Cloud.pem -L 3333:sdu-qas-rds.cxvmlebcsgyb.sa-east-1.rds.amazonaws.com:5432'
 alias db_dev='ssh -N ubuntu@18.229.124.108 -i ~/.ssh/S-Cloud.pem -L 3333:sdu-dev-rds.cxvmlebcsgyb.sa-east-1.rds.amazonaws.com:5432'
 alias db_homolog='ssh -N ubuntu@54.94.157.219 -i ~/.ssh/S-Cloud.pem -L 3333:sdu-homolog-rds.cxvmlebcsgyb.sa-east-1.rds.amazonaws.com:5432'
 alias db_prod='ssh -N ubuntu@54.94.157.219 -i ~/.ssh/S-Cloud.pem -L 3333:sdu-prod-rds.cxvmlebcsgyb.sa-east-1.rds.amazonaws.com:5432'
