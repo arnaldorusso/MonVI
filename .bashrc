@@ -37,7 +37,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color) color_prompt=yes;;
+    xterm-color|*-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -57,7 +57,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;35m\]\u@\h\[\033[00m\]:\[\033[01;32m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -76,19 +76,21 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
+    #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
+    #alias grep='grep --color=auto'
     #alias fgrep='fgrep --color=auto'
     #alias egrep='egrep --color=auto'
 fi
+
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
 alias ll='ls -l'
 alias la='ls -A'
 #alias l='ls -CF'
-alias vi='vim'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -110,46 +112,47 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Colorscheme
-#PS1="[\e[1;35m\u\e[m@ \w]\$ "
-export TERM=xterm-256color
-set -o vi
+# nvim options
+#export PATH=$HOME/tools/nvim-linux64/bin:$PATH
 
-# Virtualenv
-export WORKON_HOME=~/Envs
+alias vi='/usr/bin/vim'
+alias grep='/bin/grep --color'
+export EDITOR=/usr/bin/vim
+
+#colored man pages
+export LESS_TERMCAP_mb=$'\e[1;32m'
+export LESS_TERMCAP_md=$'\e[1;32m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;4;31m'
+
+# virtualenvwrapper
+#export WORKON_HOME=$HOME/Envs
+#export PROJECT_HOME=$HOME/Envs
+#source /home/arnaldo/.local/bin/virtualenvwrapper.sh
+
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export WORKON_HOME=$HOME/Envs
+export PROJECT_HOME=$HOME/Envs
 source /usr/local/bin/virtualenvwrapper.sh
 
-# Rpy
-export RHOME=~/R-2.15.3
-# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/R-2.15.3/bin
-# export RHOME=~/R-3.1.2
+# hack do microfone - noisetorch
 
-# vim-ipython | <Ctrl>+s
-stty stop undef # to unmap ctrl-s
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+    
+# terminal colors
+export PS1="\[\e[31m\][\[\e[m\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[38;5;153m\]\h\[\e[m\] \[\e[38;5;214m\]\W\[\e[m\]\[\e[31m\]]\[\e[m\]\\$ "
 
-# magicmonty/bash-git-prompt
-# gitprompt configuration
+# SCVIM
 
-# Set config variables first
-GIT_PROMPT_ONLY_IN_REPO=1
+export SCVIM_TAGFILE=~/.sctags
 
-# GIT_PROMPT_FETCH_REMOTE_STATUS=0   # uncomment to avoid fetching remote status
-
-# GIT_PROMPT_START=...    # uncomment for custom prompt start sequence
-# GIT_PROMPT_END=...      # uncomment for custom prompt end sequence
-
-# as last entry source the gitprompt script
-# GIT_PROMPT_THEME=Custom # use custom .git-prompt-colors.sh
-GIT_PROMPT_THEME=Solarized # use theme optimized for solarized color scheme
-source ~/.bash-git-prompt/gitprompt.sh
-
-
-function setproxy() {
-    export {http,https,ftp}_proxy='http://proxy.furg.br:3128'
-}
-
-function unsetproxy() {
-    unset {http,https,ftp}_proxy
-}
-
-# Color Theme
+# Solidaridad
+alia sdb_qas='ssh -N ubuntu@18.231.78.210 -i ~/.ssh/S-Cloud.pem -L 3333:sdu-qas-rds.cxvmlebcsgyb.sa-east-1.rds.amazonaws.com:5432'
+alias db_dev='ssh -N ubuntu@18.229.124.108 -i ~/.ssh/S-Cloud.pem -L 3333:sdu-dev-rds.cxvmlebcsgyb.sa-east-1.rds.amazonaws.com:5432'
+alias db_homolog='ssh -N ubuntu@54.94.157.219 -i ~/.ssh/S-Cloud.pem -L 3333:sdu-homolog-rds.cxvmlebcsgyb.sa-east-1.rds.amazonaws.com:5432'
+alias db_prod='ssh -N ubuntu@54.94.157.219 -i ~/.ssh/S-Cloud.pem -L 3333:sdu-prod-rds.cxvmlebcsgyb.sa-east-1.rds.amazonaws.com:5432'
