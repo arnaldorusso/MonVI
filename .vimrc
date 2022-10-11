@@ -28,6 +28,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'nvie/vim-flake8'
 Plugin 'tpope/vim-fugitive'
 Plugin 'heavenshell/vim-pydocstring'
+Plugin 'supercollider/scvim'
 " Plugin 'dense-analysis/ale'
 " Plugin 'jmcantrell/vim-virtualenv'
 " Plugin 'davidhalter/jedi-vim'
@@ -356,6 +357,15 @@ let g:pymode_lint_on_write = 0 " desativa o checker ao salvar
 
 " Map ,a to clean extra endline tabs/spaces
 nnoremap <silent> ,a :%s,\s\+$,,<CR>
+
+"" SuperCollider
+au BufEnter,BufWinEnter,BufNewFile,BufRead *.sc,*.scd set filetype=supercollider
+au Filetype supercollider packadd scvim
+
+let g:sclangTerm = "gnome-terminal -x $SHELL -ic"
+let g:scFlash = 1
+let g:scSplitDirection = "h"
+let g:scSplitSize = 30
 
 
 " Cuducos insertion of AsciiDoc function
