@@ -21,7 +21,8 @@ Plugin 'dkprice/vim-easygrep'
 Plugin 'rking/ag.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'neoclide/coc.nvim'
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
+Plugin 'dense-analysis/ale'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-commentary'
 Plugin 'nvie/vim-flake8'
@@ -99,18 +100,9 @@ if exists('+termguicolors')
     " set t_ut=
 endif
 
-"" set term=xterm-256color
-" if exists("$TMUX")
-"     set t_Co=256
-"     set notermguicolors
-" else
-"     set termguicolors
-" endif
-
-
 " Mouse and backspace(for erasure)
-" set mouse=a
-set mouse=vic
+set mouse=a
+" set mouse=vic
 set bs=2
 
 "filetype indent plugin on
@@ -138,17 +130,14 @@ autocmd! bufwritepost .vimrc source %
 
 " better copy and paste
 set pastetoggle=<F2>
-set clipboard=unnamedplus
+set clipboard+=unnamedplus
+" set t_BE=
 
 
-" Mouse and backspace(for erasure)
-set mouse=a
-set bs=2
-
-" Save with Ctrl+B
-noremap <C-B> :update<CR>
-vnoremap <C-B> <C-C>:update<CR>
-inoremap <C-B> <C-O>:update<CR>
+" Save with Ctrl+s
+noremap <C-S> :update<CR>
+vnoremap <C-S> <C-C>:update<CR>
+inoremap <C-S> <C-O>:update<CR>
 
 " <ESC> key to jj
 inoremap jj <ESC>
@@ -213,7 +202,9 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 let g:airline#extensions#tabline#enabled = 1
 
 " AG Search tool
+noremap <Leader>g :Ag!
 let g:ag_working_path_mode="r"
+let g:ag_highlight=1
 
 " AsciiDoctor syntax
 " wget https://raw.github.com/dagwieers/asciidoc-vim/master/syntax/asciidoc.vim
@@ -321,6 +312,7 @@ let g:ale_linters = {
 
 let g:ale_fixers = {
       \    'python': ['yapf'],
+      \    '*': ['remove_trailing_lines', 'trim_whitespace'],
       \}
 nmap <F10> :ALEFix<CR>
 let g:ale_fix_on_save = 1

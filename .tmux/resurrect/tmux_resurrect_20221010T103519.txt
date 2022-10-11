@@ -1,0 +1,5 @@
+pane	0	0	1	:*	0	OrUm	:/home/arnaldo/sol/sdu-platform	1	nvim	:/squashfs-root/usr/bin/nvim
+pane	0	0	1	:*	1	OrUm	:/home/arnaldo/sol/sdu-platform	0	bash	:
+pane	0	0	1	:*	2	OrUm	:/home/arnaldo	0	bash	:
+window	0	0	:nvim	1	:*	d310,182x54,0,0[182x42,0,0,0,182x11,0,43{112x11,0,43,1,69x11,113,43,2}]	:
+state	0	

@@ -1,0 +1,10 @@
+pane	0	0	1	:*	0	OrUm	:/home/arnaldo/sol/sdu-platform	1	nvim	:/squashfs-root/usr/bin/nvim
+pane	0	0	1	:*	1	OrUm	:/home/arnaldo/sol/sdu-platform	0	bash	:
+pane	0	0	1	:*	2	OrUm	:/home/arnaldo	0	ssh	:ssh -N ubuntu@18.231.78.210 -i /home/arnaldo/.ssh/S-Cloud.pem -L 3333:sdu-qas-rds.cxvmlebcsgyb.sa-east-1.rds.amazonaws.com:5432
+pane	0	0	1	:*	3	OrUm	:/home/arnaldo/sol/sdu-platform	0	python	:python manage.py runserver
+pane	1	0	1	:*	0	OrUm	:/home/arnaldo	1	bash	:
+pane	2	0	1	:*	0	OrUm	:/home/arnaldo	1	bash	:
+window	0	0	:gite	1	:*	675a,205x54,0,0[205x42,0,0,0,205x11,0,43{137x11,0,43,4,67x11,138,43[67x2,138,43,2,67x8,138,46,6]}]	off
+window	1	0	:bash	1	:*	bf20,205x54,0,0,3	:
+window	2	0	:bash	1	:*	bf24,205x54,0,0,7	:
+state	0	1
