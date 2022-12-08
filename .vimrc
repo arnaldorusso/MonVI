@@ -16,7 +16,7 @@ Plugin 'preservim/tagbar'
 Plugin 'vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'kien/ctrlp.vim'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'Lokaltog/powerline' ", {'rtp': 'powerline/bindings/vim/'}
 Plugin 'dkprice/vim-easygrep'
 Plugin 'rking/ag.vim'
 Plugin 'mileszs/ack.vim'
@@ -29,6 +29,7 @@ Plugin 'nvie/vim-flake8'
 Plugin 'tpope/vim-fugitive'
 Plugin 'heavenshell/vim-pydocstring'
 Plugin 'supercollider/scvim'
+Plugin 'elzr/vim-json'
 " Plugin 'dense-analysis/ale'
 " Plugin 'jmcantrell/vim-virtualenv'
 " Plugin 'davidhalter/jedi-vim'
@@ -131,14 +132,11 @@ autocmd! bufwritepost .vimrc source %
 
 " better copy and paste
 set pastetoggle=<F2>
-set clipboard+=unnamedplus
-" set t_BE=
-
+set clipboard=unnamedplus
 
 " Save with Ctrl+s
-noremap <C-S> :update<CR>
-vnoremap <C-S> <C-C>:update<CR>
-inoremap <C-S> <C-O>:update<CR>
+noremap <C-s> :w<CR>
+inoremap <C-s> <ESC>:w<CR>
 
 " <ESC> key to jj
 inoremap jj <ESC>
@@ -210,11 +208,11 @@ let g:ag_highlight=1
 " AsciiDoctor syntax
 " wget https://raw.github.com/dagwieers/asciidoc-vim/master/syntax/asciidoc.vim
 " download this synthax inside synthax folder of .vim directory
-set syntax=asciidoc
+" set syntax=asciidoc
 
 " Markdown Unfold file
 " let g:vim_markdown_folding_disabled=1
-set nofoldenable
+" set nofoldenable
 
 " line endings & other file chars settings
 set encoding=utf-8
@@ -237,7 +235,7 @@ autocmd FileType adoc,c,cpp,cs,java setlocal commentstring=//\ %s
 " cd ~/.vim/bundle
 " git clone git://github.com/Lokaltog/vim-powerline.git
 " set laststatus=2
-let g:ycm_python_interpreter_path = '~/Envs/veg/bin/python3'
+let g:ycm_python_interpreter_path = '~/Envs/ocean/bin/python3'
 let g:ycm_python_sys_path = []
 
 let python_highlight_all=1
@@ -304,9 +302,8 @@ nmap <leader>rn <Plug>(coc-rename)
 " set signcolumn=yes
 
 
-" Ale Fix Plugin
+" Ale Fix Plugin - \   'python': ['flake8', 'pylint'],
 let g:ale_linters = {
-      \   'python': ['flake8', 'pylint'],
       \   'ruby': ['standardrb', 'rubocop'],
       \   'javascript': ['eslint'],
       \}
@@ -318,15 +315,15 @@ let g:ale_fixers = {
 nmap <F10> :ALEFix<CR>
 let g:ale_fix_on_save = 1
 
-" Close vim if the last tab is NerdTree
-augroup bufclosetrack
-  au!
-  autocmd WinLeave * let g:lastWinName = @%
-augroup END
-function! LastWindow()
-  exe "split " . g:lastWinName
-endfunction
-command -nargs=0 LastWindow call LastWindow()
+"" Close vim if the last tab is NerdTree
+" augroup bufclosetrack
+"   au!
+"   autocmd WinLeave * let g:lastWinName = @%
+" augroup END
+" function! LastWindow()
+"   exe "split " . g:lastWinName
+" endfunction
+" command -nargs=0 LastWindow call LastWindow()
 
 " config NERDTree
 noremap <silent> <leader>n :NERDTreeToggle<CR>
@@ -373,43 +370,43 @@ let g:scSplitSize = 30
 " Word processor mode                                                         "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " autocmd BufNewFile,BufRead *.adoc,*.tex call WordProcessor()
-autocmd BufNewFile,BufRead *.adoc call WordProcessor()
+" autocmd BufNewFile,BufRead *.adoc call WordProcessor()
 
-function AsciiDocFold()
-  let line = getline(v:lnum)
-  if match(line, '^===') >= 0
-    return ">2"
-  elseif match(line, '^==') >= 0
-    return ">1"
-  endif
-  return "="
-endfunction
+" function AsciiDocFold()
+"   let line = getline(v:lnum)
+"   if match(line, '^===') >= 0
+"     return ">2"
+"   elseif match(line, '^==') >= 0
+"     return ">1"
+"   endif
+"   return "="
+" endfunction
 
-function AsciiDocFoldText()
-  let foldsize = (v:foldend-v:foldstart)
-  return getline(v:foldstart).' ('.foldsize.' lines)'
-endfunction
+" function AsciiDocFoldText()
+"   let foldsize = (v:foldend-v:foldstart)
+"   return getline(v:foldstart).' ('.foldsize.' lines)'
+" endfunction
 
-function WordProcessor()
-  noremap <silent> <leader>f gwip
-  if has("gui_macvim")
-    set guifont=PT\ Mono:h14
-  endif
-  " colorscheme summerfruit256
-  colorscheme Tomorrow
-  syntax on
-  set tw=90  " widht of document
-  set wrap
-  set linebreak
-  set nolist
-  " set formatoptions+=t
-  setl fo=aw2tq
-  " set textwidth=0
-  " set wrapmargin=0
-  set colorcolumn=90
-  set spell spelllang=pt_br,en
-  setlocal foldmethod=expr
-  set syntax=asciidoc
-  " setlocal foldexpr=AsciiDocFold()
-  " setlocal foldtext=AsciiDocFoldText()
-endfunction
+" function WordProcessor()
+"   noremap <silent> <leader>f gwip
+"   if has("gui_macvim")
+"     set guifont=PT\ Mono:h14
+"   endif
+"   " colorscheme summerfruit256
+"   colorscheme Tomorrow
+"   syntax on
+"   set tw=90  " widht of document
+"   set wrap
+"   set linebreak
+"   set nolist
+"   " set formatoptions+=t
+"   setl fo=aw2tq
+"   " set textwidth=0
+"   " set wrapmargin=0
+"   set colorcolumn=90
+"   set spell spelllang=pt_br,en
+"   setlocal foldmethod=expr
+"   set syntax=asciidoc
+"   " setlocal foldexpr=AsciiDocFold()
+"   " setlocal foldtext=AsciiDocFoldText()
+" endfunction
