@@ -172,7 +172,7 @@ noremap <Leader>e :quit<CR> " Quit current window
 
 " Show line number and lenght
 set number " Show line number
-set tw=79  " widht of document
+set tw=80  " widht of document
 " set nowrap " don't automatically wrap on load
 " set fo-=t  " don't automatically wrap text when typing
 set wrap
@@ -196,7 +196,6 @@ set noswapfile
 
 " NerdTree
 " Open the existing NERDTree on each new tab.
-autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 let g:airline#extensions#tabline#enabled = 1
 
@@ -209,10 +208,6 @@ let g:ag_highlight=1
 " wget https://raw.github.com/dagwieers/asciidoc-vim/master/syntax/asciidoc.vim
 " download this synthax inside synthax folder of .vim directory
 " set syntax=asciidoc
-
-" Markdown Unfold file
-" let g:vim_markdown_folding_disabled=1
-" set nofoldenable
 
 " line endings & other file chars settings
 set encoding=utf-8
@@ -277,6 +272,14 @@ let g:ctrlp_map = '<c-p>'  "CtrP shortcut
 " autocmd InsertLeave * set nocul
 " set guicursor-=a:blinkon0
 " set scrolloff=3
+set cursorline
+set incsearch
+
+" Fold method (zo- open, zc- close, z+shift+r- open all, z+shift+m- close all)
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
 autocmd InsertEnter,InsertLeave * set cul!
 
 " TagBar config
@@ -316,13 +319,13 @@ nmap <F10> :ALEFix<CR>
 let g:ale_fix_on_save = 1
 
 "" Close vim if the last tab is NerdTree
-" augroup bufclosetrack
-"   au!
-"   autocmd WinLeave * let g:lastWinName = @%
-" augroup END
-" function! LastWindow()
-"   exe "split " . g:lastWinName
-" endfunction
+augroup bufclosetrack
+  au!
+  autocmd WinLeave * let g:lastWinName = @%
+augroup END
+function! LastWindow()
+  exe "split " . g:lastWinName
+endfunction
 " command -nargs=0 LastWindow call LastWindow()
 
 " config NERDTree
@@ -364,6 +367,11 @@ let g:scFlash = 1
 let g:scSplitDirection = "h"
 let g:scSplitSize = 30
 
+" Vim jump to the last position when reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
+endif
 
 " Cuducos insertion of AsciiDoc function
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
