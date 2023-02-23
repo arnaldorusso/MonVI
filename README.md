@@ -86,4 +86,3 @@ Compiling Vim from source is actually not that difficult. Here's what you should
 These `configure` and `make` calls assume a Debian-like distro where Vim's runtime files directory is placed in `/usr/share/vim/vim74/`, which is not Vim's default. Same thing goes for `--prefix=/usr` in the `configure` call. Those values may need to be different with a Linux distro that is not based on Debian. In such a case, try to remove the `--prefix` variable in the `configure` call and the `VIMRUNTIMEDIR` in the `make` call (in other words, go with the defaults).
 
 If you get stuck, here's some [other useful information on building Vim](http://vim.wikia.com/wiki/Building_Vim).
-

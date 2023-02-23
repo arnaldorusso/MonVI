@@ -11,6 +11,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'sheerun/vim-polyglot'
+Plugin 'rust-lang/rust.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'preservim/tagbar'
 Plugin 'vim-airline'
@@ -30,7 +31,6 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'heavenshell/vim-pydocstring'
 Plugin 'supercollider/scvim'
 Plugin 'elzr/vim-json'
-" Plugin 'dense-analysis/ale'
 " Plugin 'jmcantrell/vim-virtualenv'
 " Plugin 'davidhalter/jedi-vim'
 " Plugin 'tpope/vim-markdown'
@@ -163,7 +163,7 @@ noremap <silent> <leader>v :vsplit<CR>
 " DocString
 noremap <silent> <leader>d :Pydocstring<CR>
 let g:pydocstring_formatter = 'numpy'
-let g:pydocstring_doq_path = '/home/arnaldo/Envs/otter/bin/doq'
+let g:pydocstring_doq_path = '~/.local/bin/doq'
 
 " Ident block code
 vnoremap < <gv
@@ -202,9 +202,14 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 let g:airline#extensions#tabline#enabled = 1
 
 " AG Search tool
-noremap <Leader>g :Ag!
+noremap <Leader>f :Ag<Space>
 let g:ag_working_path_mode="r"
 let g:ag_highlight=1
+
+" noremap <Leader>g :Ack<Space>
+" if executable('ag')
+"   let g:ackprg = 'ag --vimgrep'
+" endif
 
 " AsciiDoctor syntax
 " wget https://raw.github.com/dagwieers/asciidoc-vim/master/syntax/asciidoc.vim
@@ -307,18 +312,19 @@ nmap <leader>rn <Plug>(coc-rename)
 " set signcolumn=yes
 
 
-" Ale Fix Plugin - \   'python': ['flake8', 'pylint'],
+"" Ale Fix Plugin - \   'python': ['flake8', 'pylint', 'yapf'],
 let g:ale_linters = {
       \   'ruby': ['standardrb', 'rubocop'],
       \   'javascript': ['eslint'],
-      \}
+      \	  'python': ['flake8']}
 
 let g:ale_fixers = {
-      \    'python': ['yapf'],
+      \    'python': ['black'],
       \    '*': ['remove_trailing_lines', 'trim_whitespace'],
       \}
 nmap <F10> :ALEFix<CR>
 let g:ale_fix_on_save = 1
+autocmd BufWritePost *.py call flake8#Flake8()
 
 "" Close vim if the last tab is NerdTree
 augroup bufclosetrack
