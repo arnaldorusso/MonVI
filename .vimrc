@@ -229,6 +229,9 @@ autocmd FileType R,r setlocal commentstring=#\ %s
 " Commentary for AsciiDoc language
 autocmd FileType adoc,c,cpp,cs,java setlocal commentstring=//\ %s
 
+" Rust Setup
+let g:rust_clip_command = 'xclip -selection clipboard'
+
 
 " =============================================
 " Python Setup
