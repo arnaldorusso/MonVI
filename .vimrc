@@ -305,6 +305,8 @@ cmap <c-k> <up>
 "Conqueror of Completion (COC)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <leader>rn <Plug>(coc-rename)
+inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<Tab>\<c-r>=coc#on_enter()\<Tab>"
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
