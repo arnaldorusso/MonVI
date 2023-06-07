@@ -31,6 +31,9 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'heavenshell/vim-pydocstring'
 Plugin 'supercollider/scvim'
 Plugin 'elzr/vim-json'
+Plugin 'vim-test/vim-test'
+Plugin 'JarrodCTaylor/vim-python-test-runner'
+Plugin 'puremourning/vimspector'
 " Plugin 'jmcantrell/vim-virtualenv'
 " Plugin 'davidhalter/jedi-vim'
 " Plugin 'tpope/vim-markdown'
@@ -246,6 +249,7 @@ let g:ycm_python_sys_path = []
 let python_highlight_all=1
 syntax on
 
+
 "" python with virtualenv support
 " py << EOF
 " import os
@@ -265,6 +269,11 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
+
+" TEST vim-test
+" let test#strategy = "neovim"
+let g:test#preserve_screen = 1
+let g:vimspector_enable_mappings='HUMAN'
 
 "vim Customizations
 "
@@ -294,6 +303,8 @@ autocmd InsertEnter,InsertLeave * set cul!
 
 " TagBar config
 nmap <F8> :TagbarToggle<CR>
+set tags=tags
+autocmd FileType python,c,cpp TagbarOpen
 
 " use c-j c-k in command mode
 cmap <c-j> <down>
