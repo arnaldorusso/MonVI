@@ -33,11 +33,10 @@ Compiling Vim from source is actually not that difficult. Here's what you should
 1.  First, install all the prerequisite libraries, including Mercurial. For a Debian-like Linux distribution like Ubuntu, that would be the following:
 
 
-        sudo apt-get install libncurses5-dev libgnome2-dev libgnomeui-dev \
-        libgtk2.0-dev libatk1.0-dev libbonoboui2-dev \
-        libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev ruby-dev mercurial
-
-2. Remove vim if you have it already.
+        apt-get install libncurses-dev libgtk2.0-dev libatk1.0-dev libcairo2-dev \
+        libx11-dev libxpm-dev libxt-dev python3-dev ruby-dev mercurial
+        
+3. Remove vim if you have it already.
 
         sudo apt-get remove vim vim-runtime gvim
 
